@@ -1,0 +1,178 @@
+
+main > .container {
+    padding: 60px 15px 0;
+}
+
+
+
+
+
+.question {
+    height: 180px;
+    border: solid black 3px;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 5px;
+    margin-bottom: 30px;
+    margin-top: 30px;
+    /* display: table; */
+}
+
+.question-avatar {
+    height: 100px;
+    width: 100px;
+}
+
+.question-avatar > img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    margin: 3px
+}
+
+.question-text {
+    margin-bottom: 6px;
+    overflow-wrap:break-word;
+    word-wrap: break-word;
+}
+
+.hot-questions {
+    margin-top: 65px;
+}
+
+
+.like-button {
+    margin-top: 15px;
+    margin-left: 10px;
+    width: 100%;
+    object-fit: cover;
+    max-width: 10px;
+}
+
+
+
+
+
+.best-members {
+    margin-top: 50px;
+}
+
+.user-avatar {
+    height: 50px;
+    object-fit: cover;
+    border-radius: 50%;
+    /* padding-left: 30px; */
+}
+
+.user-username {
+    color: white;
+}
+
+
+
+
+
+
+.question-field {
+    width: 80%;
+}
+
+.new-question-text {
+    height: 15em;
+}
+
+.new-question-ask-button {
+    border-radius: 2px;
+}
+
+.new-question-text {
+    max-height: 20em;
+}
+
+.question-avatar-large {
+    height: 150px;
+    width: 150px;
+}
+
+.question-avatar-large > img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    margin: 3px
+}
+
+
+
+
+
+.answer {
+    height: 180px;
+    border: solid black 3px;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 5px;
+    margin-bottom: 30px;
+    margin-top: 30px;
+    /* display: table; */
+}
+
+.answer-avatar {
+    height: 100px;
+    width: 100px;
+}
+
+.answer-avatar > img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    margin: 3px
+}
+
+.answer-text {
+    margin-bottom: 6px;
+    overflow-wrap:break-word;
+    word-wrap: break-word;
+}
+
+.answer-field {
+    margin: 10px;
+    max-height: 20em;
+    max-width: 97%;
+}
+
+.answer-button {
+    margin: 10px;
+    max-width: 100px;
+}
+
+
+
+
+.settings-choose-avatar-button {
+    max-width: 100px;
+}
+
+.settings-avatar {
+    height: 200px;
+    width: 200px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin: 3px    
+}
+
+
+
+
+.authorize-error {
+    color: red
+}
+
+
+
+
+.reg-error {
+    color: red
+}

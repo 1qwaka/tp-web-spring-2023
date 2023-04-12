@@ -1,0 +1,35 @@
+{% load static %}
+
+<!-- ВОПРОС -->
+<div class="question">
+    <div div class="row">
+        <div class="col-3">
+            <div class="question-avatar">
+                <img src="{% static "img/kitty1.jpg" %}" alt="avatar">
+            </div>
+            <div class="row">
+                <div class="col-10 like-button">
+                    <input type="number" value="0" min="0" max="10">
+                </div>
+            </div>
+        </div>
+        <div class="col-9">
+            <h2 class="question-header"><a href="{% url "question" question.id %}">{{ question.title }}</a></h2>
+            <div class="question-text">
+                {{ question.text }}
+            </div>
+            <div class="row mt-5">
+                <div class="col-4">
+                    <a href="{% url "question" question.id %}">Answers(2)</a>
+                </div>
+                <div class="col-7">
+                    Tags:
+                    <a href="{% url "tag" "c++" %}" class="tag">c++</a>
+                    <a href="{% url "tag" "c+-" %}" class="tag">c+-</a>
+                    <a href="{% url "tag" "c--" %}" class="tag">c--</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ВОПРОС -->

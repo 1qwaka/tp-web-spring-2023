@@ -1,0 +1,19 @@
+{% extends "inc/base.html" %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-4">
+        <h1 class="mt-5">Hot questions</h1>
+    </div>
+    <div class="col-4">
+        <h4 class="hot-questions"><a href="{% url "index" %}">New questions</a></h4>
+    </div>
+</div>
+
+{% for question in questions %}
+  {% include "inc/question_item.html" %}
+{% endfor %}
+
+
+{% endblock %}
