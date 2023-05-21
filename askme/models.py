@@ -6,5 +6,5 @@ QUESTIONS = [
         "title": f"some question {i}",
         "text": f"some text {i}",
         "id": i,
-    } for i in range(3)
+    } for i in range(30)
 ]

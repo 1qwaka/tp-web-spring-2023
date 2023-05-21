@@ -11,9 +11,10 @@
     </div>
 </div>
 
-{% for question in questions %}
+{% for question in page_obj %}
   {% include "inc/question_item.html" %}
 {% endfor %}
 
+{% include "inc/paginator.html" %}
 
 {% endblock %}
