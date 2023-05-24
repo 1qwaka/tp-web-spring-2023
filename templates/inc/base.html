@@ -1,5 +1,5 @@
 
-
+{% load static %}
 <!doctype html>
 <html lang="en" class="h-100" data-bs-theme="auto">
 
@@ -64,26 +64,53 @@
 
                 <form class="d-flex ml-5" role="search">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-success" type="submit">Ask</button>
+                    <div class="header__buttons">
+                        <button class="btn btn-success mr-5 search-button" type="submit">Search</button>
+<!--                        <form action="{% url "ask" %}">-->
+<!--                            <input class="btn btn-success" type="submit" value="Ask" />-->
+<!--                        </form>-->
+
+                            <button class="btn btn-success ask-button" type="submit">
+                                <a href="{% url "ask" %}" style="text-decoration: none; color: white">
+                                    Ask
+                                </a>
+                            </button>
+                    </div>
                 </form>
             </div>
 
+
             <div class=" user ">
+
+                {% if request.user.is_authenticated %}
 
                 <div class="row gx-5">
                     <div class="col-3">
-                        <img class="user-avatar" src="../static/img/kitty1.jpg" alt="your avatar">
+                        <img class="user-avatar" src="{{ request.user.profile.avatar.url }}" alt="your avatar">
                     </div>
                     <div class="col-9">
                         <div class="user-username">
-                            Shvabra
+                            {{ request.user.username }}
                         </div>
                         <div class="user-links">
                             <a class="user-link me-1" href="{% url "settings" %}">settings</a>
-                            <a class="user-link" href="">log out</a>
+                            <a class="user-link" href="{% url "logout" %}">log out</a>
+<!--                            <a class="user-link" href="{% url "logout" %}?continue={{ request.path }}">log out</a>-->
                         </div>
                     </div>
                 </div>
+
+                {% else %}
+
+                <div class="row gx-5">
+                        <div class="user-links">
+                            <a class="user-link" href="{% url "login" %}">log in</a>
+<!--                            <a class="user-link" href="{% url "login" %}?continue={{ request.path }}">log in</a>-->
+                        </div>
+                    </div>
+                </div>
+
+                {% endif %}
 
             </div>
 
@@ -152,15 +179,15 @@
             <div class="col-3 pl-3 mt-5">
                 <div class="popular-tags">
                     <h2 class="popular-tags-header">Popular tags</h2>
-                    <a href="{% url "tag" "perl" %}" class="tag">perl</a>
-                    <a href="{% url "tag" "python" %}" class="tag">python</a>
-                    <a href="{% url "tag" "c--" %}" class="tag">c--</a>
+                    {% for tag in popular_tags %}
+                        <a href="{% url "tag" tag.name %}" class="tag">{{ tag.name }}</a>
+                    {% endfor %}
                 </div>
                 <div class="best-members">
                     <h2 class="best-memvers-header">Best members</h2>
-                    <a href="#" class="tag">Rogozin</a>
-                    <a href="#" class="tag">Gordin</a>
-                    <a href="#" class="tag">Alexandrov</a>
+                    {% for member in best_members %}
+                        <span class="best-member">{{ member.user.username }},</span>
+                    {% endfor %}
                 </div>
             </div>
 
@@ -171,7 +198,9 @@
 </main>
 
 
-<script src="../static/js/bootstrap.js"></script>
+<script src="{% static "js/bootstrap.js" %}"></script>
+<script src="{% static "js/jquery-3.7.0.min.js" %}"></script>
+<script src="{% static "js/main.js" %}"></script>
 
 
 </body>

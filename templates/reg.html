@@ -1,86 +1,107 @@
 {% extends "inc/base.html" %}
 
 {% block content %}
+{% load bootstrap5 %}
 
 
 <div class="row">
     <div class="col-3">
-        <h2 class="mt-5">Registration</h2>
+        <h2 class="mt-5">Sign up</h2>
     </div>
 </div>
 
-<div class="row">
-    <div class="reg-error">
-        Sorry, this email already registered
-    </div>
-</div>
-
-<div class="row my-3">
-    <div class="col-2">
-        <span>Login</span>
-    </div>
-    <div class="col-4">
-        <input class="reg-input" type="text">
-    </div>
-</div>
-
-
-<div class="row my-3">
-    <div class="col-2">
-        <span>Email</span>
-    </div>
-    <div class="col-4">
-        <input class="reg-input" type="text">
-    </div>
-</div>
-
-
-<div class="row my-3">
-    <div class="col-2">
-        <span>Nick</span>
-    </div>
-    <div class="col-4">
-        <input class="reg-input" type="text">
-    </div>
-</div>
-
-<div class="row my-3">
-    <div class="col-2">
-        <span>Password</span>
-    </div>
-    <div class="col-4">
-        <input class="reg-input" type="password">
-    </div>
-</div>
-
-<div class="row my-3">
-    <div class="col-2">
-        <span>Repeat Password</span>
-    </div>
-    <div class="col-4">
-        <input class="reg-input" type="password">
-    </div>
-</div>
-
-
-<div class="row my-3">
-    <div class="col-2">
-        Upload avatar
-    </div>
-    <div class="col-4">
-        <button class="auth-upload-avatar-button">Choose</button>
-    </div>
-</div>
-
-
+<form action="/signup/?continue=" {% url "index" %}" method="post" enctype="multipart/form-data">
+{% csrf_token %}
+{% bootstrap_form form %}
 <div class="row my-4">
     <div class="col-2">
 
     </div>
     <div class="col-4">
-        <button class="auth-login-button">Register</button>
+        <button class="settings-save-button">Submit</button>
     </div>
 </div>
+</form>
+
+
+<!--<div class="row">-->
+<!--    <div class="col-3">-->
+<!--        <h2 class="mt-5">Registration</h2>-->
+<!--    </div>-->
+<!--</div>-->
+
+<!--<div class="row">-->
+<!--    <div class="reg-error">-->
+<!--        Sorry, this email already registered-->
+<!--    </div>-->
+<!--</div>-->
+
+<!--<div class="row my-3">-->
+<!--    <div class="col-2">-->
+<!--        <span>Login</span>-->
+<!--    </div>-->
+<!--    <div class="col-4">-->
+<!--        <input class="reg-input" type="text">-->
+<!--    </div>-->
+<!--</div>-->
+
+
+<!--<div class="row my-3">-->
+<!--    <div class="col-2">-->
+<!--        <span>Email</span>-->
+<!--    </div>-->
+<!--    <div class="col-4">-->
+<!--        <input class="reg-input" type="text">-->
+<!--    </div>-->
+<!--</div>-->
+
+
+<!--<div class="row my-3">-->
+<!--    <div class="col-2">-->
+<!--        <span>Nick</span>-->
+<!--    </div>-->
+<!--    <div class="col-4">-->
+<!--        <input class="reg-input" type="text">-->
+<!--    </div>-->
+<!--</div>-->
+
+<!--<div class="row my-3">-->
+<!--    <div class="col-2">-->
+<!--        <span>Password</span>-->
+<!--    </div>-->
+<!--    <div class="col-4">-->
+<!--        <input class="reg-input" type="password">-->
+<!--    </div>-->
+<!--</div>-->
+
+<!--<div class="row my-3">-->
+<!--    <div class="col-2">-->
+<!--        <span>Repeat Password</span>-->
+<!--    </div>-->
+<!--    <div class="col-4">-->
+<!--        <input class="reg-input" type="password">-->
+<!--    </div>-->
+<!--</div>-->
+
+
+<!--<div class="row my-3">-->
+<!--    <div class="col-2">-->
+<!--        Upload avatar-->
+<!--    </div>-->
+<!--    <div class="col-4">-->
+<!--        <button class="auth-upload-avatar-button">Choose</button>-->
+<!--    </div>-->
+<!--</div>-->
+
+
+<!--<div class="row my-4">-->
+<!--    <div class="col-2">-->
+
+<!--    </div>-->
+<!--    <div class="col-4">-->
+<!--        <button class="auth-login-button">Register</button>-->
+<!--    </div>-->
+<!--</div>-->
 
 
 {% endblock %}

@@ -4,25 +4,32 @@
     <div div class="row">
         <div class="col-2">
             <div class="answer-avatar">
-                <img src="{% static "img/kitty2.jpg" %}" alt="avatar">
+                <img src="{{ answer.author.avatar.url }}" alt="avatar">
             </div>
-            <div class="row">
-                <div class="col-10 like-button">
-                    <input type="number" value="0" min="0" max="10">
-                </div>
-            </div>
+<!--            <div class="row">-->
+<!--                <div class="col-10 like-button">-->
+<!--                    <input type="number" value="0" min="0" max="10">-->
+<!--                </div>-->
+<!--            </div>-->
         </div>
         <div class="col-9">
             <div class="answer-text">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis,
-                perferendis.
+                {{ answer.text }}
             </div>
+            {% if request.user.profile == answer.question.author %}
             <div class="row mt-3">
                 <label>
-                    <input type="checkbox">
+                    <input data-id="{{ answer.id }}" class="answer-correct-checkbox" type="checkbox" {% if answer.is_true %} checked {% endif %}>
                     Correct
                 </label>
             </div>
+            {% elif answer.is_true %}
+            <div class="row mt-3">
+                <label class="correct-answer-text">
+                    Correct
+                </label>
+            </div>
+            {% endif %}
         </div>
     </div>
 </div>

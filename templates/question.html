@@ -1,13 +1,14 @@
 {% extends "inc/base.html" %}
 
 {% load static %}
+{% load bootstrap5 %}
 
 {% block content %}
 
 <div class="row my-5 gx-5 question-large">
     <div class="col-2">
         <div class="question-avatar-large">
-            <img src="{% static "img/kitty1.jpg" %}" alt="avatar">
+            <img src="{{ question.author.avatar.url }}" alt="avatar">
         </div>
         <div class="like-button">
             <input type="number" value="0" min="0" max="10">
@@ -15,16 +16,16 @@
     </div>
     <div class="col-9">
         <div class="question-header">
-            <h2>{{ question.title }}</h2>
+            <h2>{{ question.header }}</h2>
         </div>
         <div class="question-text">
             {{ question.text }}
         </div>
         <div class="question-tags my-3">
             Tags:
-            <a href="{% url "tag" "c++" %}" class="tag">c++</a>
-            <a href="{% url "tag" "c+-" %}" class="tag">c+-</a>
-            <a href="{% url "tag" "c--" %}" class="tag">c--</a>
+            {% for tag in question.tags.all %}
+                <a href="{% url "tag" tag.name %}" class="tag">{{ tag.name }}</a>
+            {% endfor %}
         </div>
     </div>
 </div>
@@ -32,18 +33,40 @@
 <hr>
 
 
-{% for i in "12"|make_list %}
-{% include "inc/answer_item.html" %}
+{% for answer in question.answer_set.all %}
+    {% include "inc/answer_item.html" %}
 {% endfor %}
 
 <hr>
 
-<div class="row">
-    <textarea maxlength="5000" class="answer-field" rows="5" placeholder="Enter your answer"></textarea>
-</div>
+{% if request.user.is_authenticated %}
+
 
 <div class="row">
-    <button class="answer-button">Answer</button>
+     <form action="{{ request.get_full_path }}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        <div class="row my-4">
+            <div class="col-4">
+                <button class="settings-save-button">Submit</button>
+            </div>
+        </div>
+    </form>
 </div>
+
+<!--<div class="row">-->
+<!--    <textarea maxlength="5000" class="answer-field" rows="5" placeholder="Enter your answer"></textarea>-->
+<!--</div>-->
+
+<!--<div class="row">-->
+<!--    <button class="answer-button">Answer</button>-->
+<!--</div>-->
+
+{% else %}
+
+{% endif %}
+
+{% include "inc/paginator.html" %}
+
 
 {% endblock %}

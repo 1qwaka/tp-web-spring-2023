@@ -1,10 +1,15 @@
 
+
+
+
 main > .container {
     padding: 60px 15px 0;
 }
 
 
-
+.search-button {
+    margin-right: 50px
+}
 
 
 .question {
@@ -175,4 +180,14 @@ main > .container {
 
 .reg-error {
     color: red
+}
+
+.header__buttons {
+    display: flex;
+    width: 200px !important;
+    gap: 1rem;
+}
+
+.correct-answer-text {
+    font-weight: bold
 }

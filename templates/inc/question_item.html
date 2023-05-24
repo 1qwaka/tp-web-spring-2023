@@ -5,28 +5,34 @@
     <div div class="row">
         <div class="col-3">
             <div class="question-avatar">
-                <img src="{% static "img/kitty1.jpg" %}" alt="avatar">
+                <img src="{{ question.author.avatar.url }}" alt="avatar">
             </div>
             <div class="row">
                 <div class="col-10 like-button">
-                    <input type="number" value="0" min="0" max="10">
+<!--                    <input class="like-button-input" data-id="{{ question.id }}" type="number" onKeyDown="return false" value="{{ question.rating }}">-->
+                    <button class="like-button-input" data-id="{{ question.id }}">{{ question.rating }}</button>
                 </div>
             </div>
         </div>
         <div class="col-9">
-            <h2 class="question-header"><a href="{% url "question" question.id %}">{{ question.title }}</a></h2>
+            <h2 class="question-header"><a href="{% url "question" question.id %}">{{ question.header }}</a></h2>
             <div class="question-text">
                 {{ question.text }}
             </div>
             <div class="row mt-5">
                 <div class="col-4">
-                    <a href="{% url "question" question.id %}">Answers(2)</a>
+                    <a href="{% url "question" question.id %}">Answers({{ question.answer_set.count }})</a>
                 </div>
                 <div class="col-7">
                     Tags:
-                    <a href="{% url "tag" "c++" %}" class="tag">c++</a>
-                    <a href="{% url "tag" "c+-" %}" class="tag">c+-</a>
-                    <a href="{% url "tag" "c--" %}" class="tag">c--</a>
+                    {% for tag in question.tags.all|slice:"3" %}
+                        <a href="{% url "tag" tag.name %}" class="tag">{{ tag.name }}</a>
+                    {% endfor %}
+                    <span>
+                    {% if question.tags.all|length > 3 %}
+                        more tags...
+                    {% endif %}
+                    </span>
                 </div>
             </div>
         </div>
