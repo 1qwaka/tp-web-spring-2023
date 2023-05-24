@@ -102,7 +102,7 @@ def question(request, question_id):
 def login(request):
     if request.user.is_authenticated:
         redir = request.GET.get("continue")
-        if redir == "":
+        if redir == "" or redir is None:
             redir = "index"
         return redirect(reverse(redir))
 
@@ -140,7 +140,7 @@ def signup(request):
     #         redir = "index"
     #     return redirect(reverse(redir))
     if request.method == "GET":
-        form = SignupForm(request.POST)
+        form = SignupForm()
 
     if request.method == "POST":
         form = SignupForm(request.POST, files=request.FILES)

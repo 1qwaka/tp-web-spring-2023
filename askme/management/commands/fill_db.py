@@ -85,7 +85,7 @@ class Command(BaseCommand):
                 #     email=f"mail{i}@mail.com"
                 # ))
 
-                profiles.append(Profile(user=user, avatar=f'upload/kitty{(i % 3) + 1}.jpg'))
+                profiles.append(Profile(user=user, avatar=f'media/kitty{(i % 3) + 1}.jpg'))
 
                 # Profile.objects.create(user=user, avatar=f'media/kitty{(i % 3) + 1}.jpg')
             except IntegrityError:

@@ -86,7 +86,9 @@
 
                 <div class="row gx-5">
                     <div class="col-3">
-                        <img class="user-avatar" src="{{ request.user.profile.avatar.url }}" alt="your avatar">
+                        {% if request.user.profile.avatar %}
+                            <img class="user-avatar" src="{{ request.user.profile.avatar.url }}" alt="your avatar">
+                        {% endif %}
                     </div>
                     <div class="col-9">
                         <div class="user-username">

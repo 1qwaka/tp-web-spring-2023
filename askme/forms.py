@@ -52,7 +52,10 @@ class SignupForm(forms.ModelForm):
         user.set_password(self.cleaned_data["password"])
 
         user.save()
-        profile = Profile.objects.create(user=user, avatar=self.cleaned_data["avatar"])
+        profile = Profile.objects.create(user=user)
+        if "avatar" in self.cleaned_data and self.cleaned_data["avatar"] is not None:
+            print(f"AVATAR IN self.cleaned_data = {self.cleaned_data['avatar']}")
+            profile.avatar = self.cleaned_data["avatar"]
         # profile = Profile(user=user)
 
         if commit:
